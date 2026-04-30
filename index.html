@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holiday Scout · Vergelijking · 17-26 aug 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #09090B;
+      --ink-2: #18181B;
+      --ink-3: #3F3F46;
+      --ink-4: #71717A;
+      --paper: #FAFAFA;
+      --paper-2: #F4F4F5;
+      --line: #E4E4E7;
+      --accent: #EC4899;
+      --accent-light: #FCE7F3;
+      --ok: #15803D;
+      --ok-bg: #DCFCE7;
+      --warn: #A16207;
+      --warn-bg: #FEF3C7;
+      --bad: #B91C1C;
+      --bad-bg: #FEE2E2;
+      --aurora-1: #FDE68A;
+      --aurora-2: #FBCFE8;
+      --aurora-3: #A5F3FC;
+      --aurora-4: #DDD6FE;
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 24px 56px;
+      text-align: center;
+      background: #09090B;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(253,230,138,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 70% 50% at 80% 70%, rgba(251,207,232,.15) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(165,243,252,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 70% 10%, rgba(221,214,254,.14) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 600;
+      color: #FAFAFA;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero h1 em { font-style: italic; color: var(--aurora-2); }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .hero-chip {
+      font-size: 13px;
+      color: rgba(250,250,250,.65);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-chip strong { color: rgba(250,250,250,.9); }
+
+    /* CRITERIA STRIP */
+    .criteria-strip {
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 24px;
+    }
+    .criteria-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .criteria-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-right: 4px;
+    }
+    .c-chip {
+      font-size: 12px;
+      font-weight: 500;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      padding: 4px 12px;
+      color: var(--ink-3);
+    }
+    .c-chip.hard {
+      background: var(--bad-bg);
+      border-color: #FECACA;
+      color: var(--bad);
+    }
+
+    /* TABS */
+    .tabs-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: white;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 8px rgba(0,0,0,.06);
+    }
+    .tabs-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs-inner::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 16px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-4);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--ink); background: var(--paper-2); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      font-weight: 600;
+    }
+    .tab-btn .count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      background: var(--paper-2);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-left: 6px;
+    }
+    .tab-btn.active .count {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    /* TAB PANELS */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* SECTION */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+    .section-header {
+      margin-bottom: 28px;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .section-header p {
+      font-size: 14px;
+      color: var(--ink-4);
+    }
+    .airport-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--ok-bg);
+      color: var(--ok);
+      border-radius: 6px;
+      padding: 3px 10px;
+      margin-top: 8px;
+    }
+
+    /* PROPERTY CARDS */
+    .cards { display: flex; flex-direction: column; gap: 20px; }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+    .card.top-pick { border-color: var(--accent); }
+    .card.flag-warn { border-color: #FDE68A; }
+
+    .card-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .rank-pill {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--paper-2);
+      color: var(--ink-3);
+      margin-top: 2px;
+    }
+    .card.top-pick .rank-pill {
+      background: var(--accent);
+      color: white;
+    }
+    .card-title-block { flex: 1; }
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .card-location {
+      font-size: 13px;
+      color: var(--ink-4);
+      margin-top: 2px;
+    }
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+    .badge.top { background: var(--accent-light); color: var(--accent); }
+    .badge.budget { background: var(--ok-bg); color: var(--ok); }
+    .badge.premium { background: #EDE9FE; color: #6D28D9; }
+    .badge.warn { background: var(--warn-bg); color: var(--warn); }
+    .badge.direct { background: #E0F2FE; color: #0369A1; }
+    .badge.new { background: var(--aurora-1); color: #713F12; }
+    .badge.whatsapp { background: #DCF8C6; color: #075E54; }
+
+    .card-price {
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .price-main {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .price-sub {
+      font-size: 12px;
+      color: var(--ink-4);
+      margin-top: 3px;
+    }
+
+    .card-body {
+      padding: 18px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 32px;
+    }
+    @media (max-width: 640px) {
+      .card-body { grid-template-columns: 1fr; }
+      .card-header { flex-direction: column; gap: 8px; }
+      .card-price { text-align: left; }
+    }
+
+    .fact-row {
+      display: flex;
+      gap: 8px;
+    }
+    .fact-icon {
+      flex-shrink: 0;
+      width: 20px;
+      text-align: center;
+      font-size: 15px;
+      margin-top: 1px;
+    }
+    .fact-content {}
+    .fact-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+    }
+    .fact-value {
+      font-size: 14px;
+      color: var(--ink-2);
+      margin-top: 1px;
+    }
+    .fact-value.ok { color: var(--ok); font-weight: 500; }
+    .fact-value.warn { color: var(--warn); font-weight: 500; }
+    .fact-value.bad { color: var(--bad); font-weight: 500; }
+
+    .card-desc {
+      padding: 0 24px 16px;
+      font-size: 14px;
+      color: var(--ink-3);
+      line-height: 1.65;
+    }
+
+    .card-footer {
+      padding: 14px 24px;
+      background: var(--paper-2);
+      border-top: 1px solid var(--line);
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .card-footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .btn-primary {
+      background: var(--ink);
+      color: white;
+    }
+    .btn-primary:hover { background: var(--ink-3); }
+    .btn-secondary {
+      background: white;
+      color: var(--ink-3);
+      border: 1px solid var(--line);
+    }
+    .btn-secondary:hover { background: var(--paper-2); color: var(--ink); }
+    .card-footer-meta {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--ink-4);
+    }
+
+    /* RED FLAG BLOCK */
+    .red-flag {
+      margin: 0 24px 16px;
+      padding: 10px 14px;
+      background: var(--bad-bg);
+      border-left: 3px solid var(--bad);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 13px;
+      color: var(--bad);
+    }
+    .warn-flag {
+      margin: 0 24px 16px;
+      padding: 10px 14px;
+      background: var(--warn-bg);
+      border-left: 3px solid #D97706;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 13px;
+      color: var(--warn);
+    }
+
+    /* DIVIDER */
+    .section-divider {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 20px;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 12px;
+      color: var(--ink-4);
+      border-top: 1px solid var(--line);
+    }
+    footer strong { color: var(--ink-3); }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Holiday Scout · Vergelijking</div>
+  <h1>Zomer 2026<br><em>17-26 augustus · 9 nachten</em></h1>
+  <div class="hero-meta">
+    <div class="hero-chip">👨‍👩‍👧‍👦 <strong>3 volwassenen + Raphael (7), Zev (6), Levi (4)</strong></div>
+    <div class="hero-chip">🏠 <strong>Min. 3BR · privépool · AC · BBQ</strong></div>
+    <div class="hero-chip">✈️ <strong>Max. 1 uur van vliegveld</strong></div>
+    <div class="hero-chip">🏖️ <strong>Strand &lt;10 min rijden</strong></div>
+  </div>
+</div>
+
+<!-- CRITERIA STRIP -->
+<div class="criteria-strip">
+  <div class="criteria-inner">
+    <span class="criteria-label">Dealbreakers</span>
+    <span class="c-chip hard">Geen AC</span>
+    <span class="c-chip hard">Strand &gt;10 min</span>
+    <span class="c-chip hard">Vliegveld &gt;1 uur</span>
+    <span class="c-chip hard">Minder dan 3 slaapkamers</span>
+    <span class="c-chip hard">Pool onveilig voor 4-jarige</span>
+  </div>
+</div>
+
+<!-- TABS NAV -->
+<nav class="tabs-nav">
+  <div class="tabs-inner">
+    <button class="tab-btn active" onclick="switchTab('javea',this)">
+      🇪🇸 Jávea <span class="count">21</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('mallorca',this)">
+      🇪🇸 Mallorca <span class="count">2</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('andalusie',this)">
+      🇪🇸 Andalusië <span class="count">2</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('algarve',this)">
+      🇵🇹 Algarve <span class="count">1</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('kreta',this)">
+      🇬🇷 Kreta <span class="count">1</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===================== JÁVEA ===================== -->
+<div id="tab-javea" class="tab-panel active">
+  <div class="section">
+    <div class="section-header">
+      <h2>Jávea · Costa Blanca</h2>
+      <p>Meeste research gedaan hier. Arenal = enige zandstrand, geschikt voor Levi. Hoge seizoensprijzen in augustus.</p>
+      <div class="airport-tag">✈️ Alicante ~85 min · Valencia ~100 min — grensgeval voor 1-uur criterium</div>
+    </div>
+    <div class="cards">
+
+      <!-- #1 Casa La Palmera -->
+      <div class="card top-pick">
+        <div class="card-header">
+          <div class="rank-pill">1</div>
+          <div class="card-title-block">
+            <div class="card-name">Casa La Palmera</div>
+            <div class="card-location">🇪🇸 Jávea · Costa Blanca · Micazu (direct eigenaar)</div>
+            <div class="card-badges">
+              <span class="badge top">Top pick</span>
+              <span class="badge direct">Direct eigenaar</span>
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€2.975</div>
+            <div class="price-sub">per week (jul-aug 2026)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">4 BR · 7 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé zoutwater 10×5m + jacuzzi</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand (Arenal zand)</div>
+              <div class="fact-value ok">~5 min rijden</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja, alle kamers</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja, overdekt terras</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Rating / eigenaar</div>
+              <div class="fact-value ok">9,4/10 · Ruud Aerdts · reactie ~6u</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-desc">
+          Modern huis op 1.000m² Mediterrane tuin, zoutwaterpool met jacuzzi, 4BR (waarvan één op lager niveau met privébadkamer). Hoogste rating in de shortlist. Loopafstand naar restaurants en winkels.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.micazu.nl/vakantiehuis/spanje/costa-blanca/javea/casa-la-palmera-40361/" target="_blank" class="btn-primary">Bekijk op Micazu →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- #2 Casa Las Palmeras -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">2</div>
+          <div class="card-title-block">
+            <div class="card-name">Casa Las Palmeras</div>
+            <div class="card-location">🇪🇸 Jávea · Costa Blanca · Micazu (direct eigenaar)</div>
+            <div class="card-badges">
+              <span class="badge direct">Direct eigenaar</span>
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€2.800</div>
+            <div class="price-sub">per week aug (€400/nacht min. 5 nachten)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé outdoor pool</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand (Arenal zand)</div>
+              <div class="fact-value ok">Loopafstand Playa del Arenal</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja, slaapkamers + woonkamer</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Eigenaar</div>
+              <div class="fact-value ok">Jeroen · reactie &lt;1 uur</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-desc">
+          1.400m² perceel, nieuw ingerichte keuken en badkamers. Loopafstand naar Arenal strand, restaurants en winkels. Direct eigenaar via Micazu.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.micazu.nl/vakantiehuis/spanje/costa-blanca/javea/casa-las-palmeras-43294/" target="_blank" class="btn-primary">Bekijk op Micazu →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- #3 Calma Marina 6 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">3</div>
+          <div class="card-title-block">
+            <div class="card-name">Calma Marina · 6 pax</div>
+            <div class="card-location">🇪🇸 Jávea · Cala Andrago · Aguilarent</div>
+            <div class="card-badges">
+              <span class="badge budget">Budget best</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€1.435–€1.700</div>
+            <div class="price-sub">per week augustus</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé pool</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">Cala Andrago: kiezels 500m · Arenal (zand) 5 min</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value warn">Niet bevestigd — navragen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value warn">Niet bevestigd — navragen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">📞</div>
+            <div class="fact-content">
+              <div class="fact-label">Contact</div>
+              <div class="fact-value">reservations@aguilarent.com · +34 966 470 830</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ AC en BBQ nog niet geverifieerd — voor augustus essentieel. Navragen voor boeking.</div>
+        <div class="card-desc">
+          Sterkste budgetoptie in Jávea. Relatief privaat, dicht bij Arenal. Nadeel: Cala Andrago direct bij het huis is kiezels, niet zand.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.aguilarent.com" target="_blank" class="btn-primary">Aguilarent →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- #4 Villa Zamorita -->
+      <div class="card flag-warn">
+        <div class="card-header">
+          <div class="rank-pill">4</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Zamorita</div>
+            <div class="card-location">🇪🇸 Jávea · Costa Blanca · VillaPiscine (ES9710.549.1)</div>
+            <div class="card-badges">
+              <span class="badge warn">AC onduidelijk</span>
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€1.500</div>
+            <div class="price-sub">per week aug (est. — May: €848/4n)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé 8×4m (seizoensverwarmd)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value ok">1,5 km</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value bad">Niet vermeld in listing</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🚗</div>
+            <div class="fact-content">
+              <div class="fact-label">Auto nodig</div>
+              <div class="fact-value">Ja</div>
+            </div>
+          </div>
+        </div>
+        <div class="red-flag">🚨 AC nergens vermeld. In augustus Jávea met drie kids onder 8 = dealbreaker risico. Eerst bevestigen.</div>
+        <div class="card-desc">
+          Ruime villa met zeezicht en goede strandafstand (1,5 km). Goede prijs-kwaliteit als AC aanwezig blijkt. Panoramisch terras met meerdere niveaus.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.villapiscine.nl/vakantiehuis/Spanje/Costa-Blanca/J%c3%a1vea-X%c3%a0bia/6-personen/ES9710.549.1/" target="_blank" class="btn-primary">Bekijk op VillaPiscine →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- #5 Villa Armonia -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">5</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Armonia</div>
+            <div class="card-location">🇪🇸 Jávea · Costa Blanca · VillaPiscine (ES9710.749.1)</div>
+            <div class="card-badges">
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€1.700</div>
+            <div class="price-sub">per week aug (est. — May: €1.469)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value warn">8×4m, 120-200cm diep — geen ondiepe zone vermeld</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">5 km</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ Pooldiepte 120-200cm overal — geen ondiepe zone voor Levi (4). Navragen of er een trap/ondiep gedeelte is.</div>
+        <div class="card-desc">
+          Comfortabele villa nabij het centrum van Jávea met moderne voorzieningen. Pool wat diep voor de kleintjes; strand op 5 km is verder dan ideaal.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.villapiscine.nl/vakantiehuis/Spanje/Costa-Blanca/J%c3%a1vea-X%c3%a0bia/6-personen/ES9710.749.1/" target="_blank" class="btn-primary">Bekijk op VillaPiscine →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- #5b Villa Alaya -->
+      <div class="card flag-warn">
+        <div class="card-header">
+          <div class="rank-pill">5b</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Alaya</div>
+            <div class="card-location">🇪🇸 Jávea · Arenal · Aguilarent (eigen zoektocht)</div>
+            <div class="card-badges">
+              <span class="badge warn">Pool te diep</span>
+              <span class="badge new">Nieuw via search</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€4.068</div>
+            <div class="price-sub">per week piek augustus 2026</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value">4 BR · 8 personen (groot voor 6)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value bad">8×4m maar overal 2m diep — geen ondiep gedeelte</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand (Arenal zand)</div>
+              <div class="fact-value ok">~1 km ✓</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Rating</div>
+              <div class="fact-value">8,2/10 (37 reviews) · Aguilarent</div>
+            </div>
+          </div>
+        </div>
+        <div class="red-flag">🚨 Pool overal 2m diep — geen ondiep gedeelte voor Levi (4). Dealbreaker tenzij ze een trap/ondiep deel hebben dat niet vermeld staat. Navragen.</div>
+        <div class="card-desc">
+          300m² villa op 1.250m² perceel, 1 km van Arenal, alle voorzieningen aanwezig. Prijs hoog voor 6 personen (gedimensioneerd voor 8). Pool-diepte is het enige echte obstakel.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.aguilarent.es/alquiler-de-vacaciones/espa%C3%B1a/costa-blanca/j%C3%A1vea/villas/alaya" target="_blank" class="btn-primary">Bekijk op Aguilarent →</a>
+          <a href="tel:+34966470830" class="btn-secondary">+34 966 470 830</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <div class="section-divider">Excellence luxury (budget tier hoger)</div>
+
+      <!-- #6 Villa Juno -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">6</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Juno</div>
+            <div class="card-location">🇪🇸 Jávea · Excellence Luxury Villas</div>
+            <div class="card-badges">
+              <span class="badge premium">Premium</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€6.000–€7.285</div>
+            <div class="price-sub">per week piekseizoen aug</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">4 BR · 8 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand (Arenal zand)</div>
+              <div class="fact-value ok">1,9 km (~4 min)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="https://excellenceluxuryvillas.com" target="_blank" class="btn-primary">Excellence →</a>
+          <a href="mailto:hi@excellenceluxuryvillas.com" class="btn-secondary">hi@excellenceluxuryvillas.com</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- #7 Villa Icaro -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">7</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Icaro</div>
+            <div class="card-location">🇪🇸 Jávea · Excellence Luxury Villas</div>
+            <div class="card-badges">
+              <span class="badge premium">Premium</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€5.000–€6.468</div>
+            <div class="price-sub">per week piekseizoen aug</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand (Arenal zand)</div>
+              <div class="fact-value warn">5 km (~8 min)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="https://excellenceluxuryvillas.com" target="_blank" class="btn-primary">Excellence →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- #8 Calma Marina 8 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">8</div>
+          <div class="card-title-block">
+            <div class="card-name">Calma Marina · 8 pax</div>
+            <div class="card-location">🇪🇸 Jávea · Cala Andrago · Aguilarent</div>
+            <div class="card-badges">
+              <span class="badge budget">Budget</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€1.708–€2.000</div>
+            <div class="price-sub">per week augustus</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value">4 BR · 8 personen (te groot voor 6)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">Cala Andrago (kiezels) 500m · Arenal (zand) 5 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="mailto:reservations@aguilarent.com" class="btn-secondary">reservations@aguilarent.com</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+
+      <!-- #9 Villa Jarmila -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">9</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Jarmila</div>
+            <div class="card-location">🇪🇸 Jávea · Arenal-zone · Aguilarent</div>
+            <div class="card-badges">
+              <span class="badge budget">Budget</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€1.330</div>
+            <div class="price-sub">per week augustus</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé pool</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand (Arenal zand)</div>
+              <div class="fact-value warn">~3 km (~5 min)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value warn">Niet bevestigd — navragen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value warn">Niet bevestigd — navragen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">📞</div>
+            <div class="fact-content">
+              <div class="fact-label">Contact</div>
+              <div class="fact-value">reservations@aguilarent.com · +34 966 470 830</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ AC en BBQ nog niet geverifieerd. Goedkoopste Aguilarent-optie voor 6 personen; bel om te bevestigen.</div>
+        <div class="card-desc">
+          Goedkoopste optie in de Aguilarent-catalogus voor zes personen. Dicht bij Arenal, rustige buurt. Bel eerst voor AC-bevestiging voordat je ergens op inzet.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.aguilarent.com" target="_blank" class="btn-primary">Aguilarent →</a>
+          <a href="tel:+34966470830" class="btn-secondary">+34 966 470 830</a>
+          <div class="card-footer-meta">Via Aguilarent catalogus</div>
+        </div>
+      </div>
+
+      <div class="section-divider">Airbnb · Jávea (17-26 aug 2026, 9 nachten)</div>
+
+      <!-- Airbnb #A1 Finca Inge -->
+      <div class="card top-pick">
+        <div class="card-header">
+          <div class="rank-pill">A1</div>
+          <div class="card-title-block">
+            <div class="card-name">Charmante finca met zwembad</div>
+            <div class="card-location">🇪🇸 Jávea · nabij Arenal · Airbnb (Inge, Superhost ★4.89)</div>
+            <div class="card-badges">
+              <span class="badge top">Beste waarde Airbnb</span>
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€3.162</div>
+            <div class="price-sub">9 nachten totaal (€351/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé pool + BBQ + terras</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value ok">Nabij Arenal zandstrand</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Beoordeling</div>
+              <div class="fact-value ok">4,89 · Inge Superhost</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-desc">
+          Charmante Spaanse finca omgeven door mooie volgroeide tuinen, dichtbij oud dorp, de haven en het Arenal zandstrand. Goedkoopste Airbnb-optie met volledige amenities. Superhost met bijna perfecte score.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/rooms/41515682" target="_blank" class="btn-primary">Bekijk op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Airbnb #A2 Suzanne Las Rosas -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A2</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Las Rosas / Costa Nova</div>
+            <div class="card-location">🇪🇸 Jávea · Airbnb (Suzanne, Superhost)</div>
+            <div class="card-badges">
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€3.546</div>
+            <div class="price-sub">9 nachten totaal (€394/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé pool</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Beoordeling</div>
+              <div class="fact-value ok">Superhost · 12 reviews</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Jávea/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Airbnb #A3 Chalet Leticia -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A3</div>
+          <div class="card-title-block">
+            <div class="card-name">Chalet Leticia</div>
+            <div class="card-location">🇪🇸 Jávea · Airbnb (Superhost · Guest Favourite)</div>
+            <div class="card-badges">
+              <span class="badge top">Guest Favourite</span>
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€4.050</div>
+            <div class="price-sub">9 nachten totaal (€450/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé pool</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Beoordeling</div>
+              <div class="fact-value ok">Guest Favourite · Superhost</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Jávea/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Airbnb #A4 Balcón al Mar -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A4</div>
+          <div class="card-title-block">
+            <div class="card-name">Balcón al Mar</div>
+            <div class="card-location">🇪🇸 Jávea · Airbnb (BonCasa Costa Blanca · ★4.75)</div>
+            <div class="card-badges">
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€4.494</div>
+            <div class="price-sub">9 nachten totaal (€499/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad + extras</div>
+              <div class="fact-value ok">Privé pool + BBQ + buitenkeuken</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Beoordeling</div>
+              <div class="fact-value ok">4,75 · BonCasa Costa Blanca</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Jávea/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Airbnb #A5 Villa Pinosol Miguel Ángel -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A5</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa dicht bij strand (Pinosol)</div>
+            <div class="card-location">🇪🇸 Jávea · Pinosol · Airbnb (Miguel Ángel · ★4.75)</div>
+            <div class="card-badges">
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€4.742</div>
+            <div class="price-sub">9 nachten totaal (€527/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Pool 8×4m + jacuzzi</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Beoordeling</div>
+              <div class="fact-value ok">4,75 · Miguel Ángel</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Jávea/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Airbnb #A6 Villa Peter -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A6</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Peter</div>
+            <div class="card-location">🇪🇸 Jávea · Airbnb (Guest Favourite)</div>
+            <div class="card-badges">
+              <span class="badge top">Guest Favourite</span>
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€4.957</div>
+            <div class="price-sub">9 nachten totaal (€551/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 7 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé pool</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Beoordeling</div>
+              <div class="fact-value ok">Guest Favourite</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Jávea/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <div class="section-divider">Excellence Luxury Villas · overige Jávea portfolio</div>
+
+      <!-- Excellence compact cards -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">E1</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Terrace sur Mer</div>
+            <div class="card-location">🇪🇸 Jávea · Excellence Luxury Villas</div>
+            <div class="card-badges">
+              <span class="badge premium">5BR · 10p</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€3.950</div>
+            <div class="price-sub">per week augustus (navragen)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">5 BR · 10 personen — ruim voor onze 6</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Voorzieningen</div>
+              <div class="fact-value ok">Privé pool · AC · BBQ</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value">Coastal Jávea — bevestigen via Excellence</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="mailto:hi@excellenceluxuryvillas.com" class="btn-primary">hi@excellenceluxuryvillas.com</a>
+          <a href="tel:+442073629055" class="btn-secondary">+44 207 362 9055</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">E2</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Morers Plus</div>
+            <div class="card-location">🇪🇸 Jávea · Excellence Luxury Villas</div>
+            <div class="card-badges">
+              <span class="badge premium">5BR · 10p</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€4.290</div>
+            <div class="price-sub">per week augustus</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">5 BR · 10 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Voorzieningen</div>
+              <div class="fact-value ok">Privé pool · AC · BBQ</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="mailto:hi@excellenceluxuryvillas.com" class="btn-primary">hi@excellenceluxuryvillas.com</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">E3</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Halcon al Mar</div>
+            <div class="card-location">🇪🇸 Jávea · Excellence Luxury Villas</div>
+            <div class="card-badges">
+              <span class="badge premium">4BR · seaside</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€4.605</div>
+            <div class="price-sub">per week augustus</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">4 BR · 8 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🌊</div>
+            <div class="fact-content">
+              <div class="fact-label">Ligging</div>
+              <div class="fact-value ok">"Stunning seaside retreat" — dichtbij water</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="mailto:hi@excellenceluxuryvillas.com" class="btn-primary">hi@excellenceluxuryvillas.com</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">E4</div>
+          <div class="card-title-block">
+            <div class="card-name">Casa Saladar</div>
+            <div class="card-location">🇪🇸 Jávea · Levante zone · Excellence</div>
+            <div class="card-badges">
+              <span class="badge premium">5BR · zeezicht</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€3.950–€4.500</div>
+            <div class="price-sub">per week aug (schatting)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">5 BR · 10 personen — eigen kamer voor iedereen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">Levante: Granadella (kiezels) dichtbij · Arenal (zand) 10 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="mailto:hi@excellenceluxuryvillas.com" class="btn-primary">hi@excellenceluxuryvillas.com</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">E5</div>
+          <div class="card-title-block">
+            <div class="card-name">Casa Picaio · Casa Olimpo · Casa Tossal</div>
+            <div class="card-location">🇪🇸 Jávea · Excellence Luxury Villas</div>
+            <div class="card-badges">
+              <span class="badge premium">4BR opties</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€2.000–€3.200</div>
+            <div class="price-sub">per week (schatting augustus)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">4 BR · 8 personen (alle drie)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Voorzieningen</div>
+              <div class="fact-value ok">Privé pool · AC · alle drie</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">📋</div>
+            <div class="fact-content">
+              <div class="fact-label">Opmerking</div>
+              <div class="fact-value">Zonelocatie binnen Jávea navragen. Prijzen zijn shoulder-schattingen; augustus-piek verifiëren.</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="mailto:hi@excellenceluxuryvillas.com" class="btn-primary">hi@excellenceluxuryvillas.com</a>
+          <a href="tel:+442073629055" class="btn-secondary">+44 207 362 9055</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MALLORCA ===================== -->
+<div id="tab-mallorca" class="tab-panel">
+  <div class="section">
+    <div class="section-header">
+      <h2>Mallorca</h2>
+      <p>Palma luchthaven goed bereikbaar. Let op: augustus is extreem druk. Beide opties vrij betaalbaar.</p>
+      <div class="airport-tag">✈️ Palma de Mallorca · Ca Na Poveta ~45 min · Dofins Bahia Azul ~30 min ✓</div>
+    </div>
+    <div class="cards">
+
+      <!-- #1 Dofins Bahia Azul -->
+      <div class="card top-pick">
+        <div class="card-header">
+          <div class="rank-pill">1</div>
+          <div class="card-title-block">
+            <div class="card-name">Dofins Bahia Azul</div>
+            <div class="card-location">🇪🇸 Llucmajor · Mallorca · VillaPiscine (ES8125.102.1)</div>
+            <div class="card-badges">
+              <span class="badge top">Beste van Mallorca</span>
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€1.700</div>
+            <div class="price-sub">per week aug (est. — May: €967/4n)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé 8×4m</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value ok">0,8 km ✓</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Palma</div>
+              <div class="fact-value ok">~30 min ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-desc">
+          Gerenoveerde villa in rustige woonwijk, groot gazon en terras. Strand op 800m lopend, Palma luchthaven 30 minuten. Augustusprijs nog niet bevestigd — May tarieven zijn scherp.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.villapiscine.nl/vakantiehuis/Spanje/Mallorca/Llucmajor/6-personen/ES8125.102.1/" target="_blank" class="btn-primary">Bekijk op VillaPiscine →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- #2 Ca Na Poveta -->
+      <div class="card flag-warn">
+        <div class="card-header">
+          <div class="rank-pill">2</div>
+          <div class="card-title-block">
+            <div class="card-name">Ca Na Poveta</div>
+            <div class="card-location">🇪🇸 Santa Margalida · Noord-Mallorca · VillaPiscine (EMF761)</div>
+            <div class="card-badges">
+              <span class="badge warn">Strand ver</span>
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€1.365</div>
+            <div class="price-sub">per week (May 2026 — aug vermoedelijk hoger)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé zoutwater 50m² met traptoegang</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value bad">10,7 km — boven 10 min criterium</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja + buitenkeuken</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏡</div>
+            <div class="fact-content">
+              <div class="fact-label">Privacy</div>
+              <div class="fact-value ok">Buurman 160m weg — uitzonderlijk privaat</div>
+            </div>
+          </div>
+        </div>
+        <div class="red-flag">🚨 Strand op 10,7 km — buiten het strand-criterium. Alleen interessant als jullie bereid zijn dat te accepteren voor de privacy en de lage prijs.</div>
+        <div class="card-desc">
+          Uitzonderlijk privaat landelijk huis in Noord-Mallorca met speeltoestellen en grote tuin. Ideaal voor gezinnen die rust boven strandnabijheid stellen. Zoutwaterpool met traptoegang goed voor Levi (4).
+        </div>
+        <div class="card-footer">
+          <a href="https://www.villapiscine.nl/vakantiehuis/Spanje/Mallorca/Ca-Na-Poveta---Santa-Margalida/6-personen/EMF761/" target="_blank" class="btn-primary">Bekijk op VillaPiscine →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ANDALUSIË ===================== -->
+<div id="tab-andalusie" class="tab-panel">
+  <div class="section">
+    <div class="section-header">
+      <h2>Andalusië · Costa del Sol</h2>
+      <p>Malaga luchthaven goed bereikbaar. Let op: augustus is erg heet in het binnenland (Sayalonga ~35-38°C). Estepona aan de kust is aangenamer.</p>
+      <div class="airport-tag">✈️ Malaga · Estepona ~45 min ✓ · Sayalonga ~45 min ✓</div>
+    </div>
+    <div class="cards">
+
+      <!-- #1 Las Granadillas Estepona -->
+      <div class="card top-pick">
+        <div class="card-header">
+          <div class="rank-pill">1</div>
+          <div class="card-title-block">
+            <div class="card-name">Las Granadillas</div>
+            <div class="card-location">🇪🇸 Estepona · Costa del Sol · VillaPiscine (ES5730.683.1)</div>
+            <div class="card-badges">
+              <span class="badge top">Beste van Andalusië</span>
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€1.779</div>
+            <div class="price-sub">per week (May — aug waarschijnlijk hoger)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé 9×4m</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">4 km (~8 min) — aan criterium grens</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Malaga</div>
+              <div class="fact-value ok">~45 min ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-desc">
+          Rustige villa aan de Costa del Sol met zeezicht. Strand op 4 km; niet ideaal maar acceptabel. Malaga luchthaven goed bereikbaar. Augustusprijs waarschijnlijk hoger dan vermelde May-tarief.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.villapiscine.nl/vakantiehuis/Spanje/Costa-del-Sol/Estepona/6-personen/ES5730.683.1/" target="_blank" class="btn-primary">Bekijk op VillaPiscine →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- #2 El Ancla Sayalonga -->
+      <div class="card flag-warn">
+        <div class="card-header">
+          <div class="rank-pill">2</div>
+          <div class="card-title-block">
+            <div class="card-name">El Ancla</div>
+            <div class="card-location">🇪🇸 Sayalonga · Andalusië · Micazu (direct eigenaar)</div>
+            <div class="card-badges">
+              <span class="badge direct">Direct eigenaar</span>
+              <span class="badge warn">Strand 19 km</span>
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€2.604</div>
+            <div class="price-sub">per week zomer</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">4 BR · 8 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé verwarmd</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value bad">~19 km naar Nerja — ver buiten criterium</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja, alle slaapkamers</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🌡️</div>
+            <div class="fact-content">
+              <div class="fact-label">Klimaat augustus</div>
+              <div class="fact-value bad">Binnenland Andalusië ~35-38°C overdag</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Eigenaar</div>
+              <div class="fact-value ok">Petra & Jan · reactie &lt;5 uur</div>
+            </div>
+          </div>
+        </div>
+        <div class="red-flag">🚨 Strand 19 km — hard buiten het 10-minuten criterium. Binnenland Andalusië in augustus is ook aanzienlijk heter dan de kust. Visueel geweldig object maar past niet op criteria.</div>
+        <div class="card-desc">
+          Prachtige Moorse-stijl villa met panoramisch Mediterraans uitzicht en buitenkeuken. Qua uitstraling en prijs interessant; de strandafstand maakt het alleen interessant als jullie bereid zijn er auto mee te nemen.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.micazu.nl/vakantiehuis/spanje/andalusie/sayalonga/el-ancla-7315/" target="_blank" class="btn-primary">Bekijk op Micazu →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ALGARVE ===================== -->
+<div id="tab-algarve" class="tab-panel">
+  <div class="section">
+    <div class="section-header">
+      <h2>Algarve · Portugal</h2>
+      <p>Faro luchthaven 20 minuten. Almancil zit in het "Golden Triangle" (Vale do Lobo, Quinta do Lago) — luxueuze omgeving. August is druk maar aangenamer dan Spaans binnenland.</p>
+      <div class="airport-tag">✈️ Faro luchthaven ~20 min ✓ — beste luchthaven-score van alle regio's</div>
+    </div>
+    <div class="cards">
+
+      <!-- #1 Villa Vale do Lobo -->
+      <div class="card top-pick">
+        <div class="card-header">
+          <div class="rank-pill">1</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Vale do Lobo</div>
+            <div class="card-location">🇵🇹 Almancil · Algarve · Micazu (geverifieerde verhuurder)</div>
+            <div class="card-badges">
+              <span class="badge top">Beste van Algarve</span>
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€2.933</div>
+            <div class="price-sub">per week augustus (bevestigd)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">4 BR · 8 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé 5×10m op 2.500m² terrein</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">10-15 min auto (Vale do Lobo strand)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja, door het hele huis</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja + buitenkeuken</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Faro</div>
+              <div class="fact-value ok">~20 min ✓ — beste van alle opties</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ Strand 10-15 min auto — aan de bovengrens van het criterium. Prijs €2.933/wk bevestigd voor augustus via Micazu (aug 18-26).</div>
+        <div class="card-desc">
+          Ruime villa op 2.500m² met enorme privacy in de luxe resort-omgeving van het Golden Triangle. Faro vliegveld op 20 minuten. Strand iets verder maar Algarve-stranden zijn breed, kindvriendelijk en minder druk dan Jávea in augustus.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.micazu.nl/vakantiehuis/portugal/algarve/almancil/villa-vale-do-lobo-30805/" target="_blank" class="btn-primary">Bekijk op Micazu →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===================== KRETA ===================== -->
+<div id="tab-kreta" class="tab-panel">
+  <div class="section">
+    <div class="section-header">
+      <h2>Kreta · Griekenland</h2>
+      <p>Één lead — meer research nodig. Agios Pavlos is een rustig dorpje aan de zuidkust van Kreta. Strandinfomatie onduidelijk.</p>
+      <div class="airport-tag">✈️ Heraklion ~65 min · Rethymno ~45 min — grensgeval</div>
+    </div>
+    <div class="cards">
+
+      <!-- #1 Agios Pavlos -->
+      <div class="card flag-warn">
+        <div class="card-header">
+          <div class="rank-pill">1</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Agios Pavlos</div>
+            <div class="card-location">🇬🇷 Agios Pavlos · Zuid-Kreta · VillaPiscine (GR6517.616.1)</div>
+            <div class="card-badges">
+              <span class="badge warn">Strand onbekend</span>
+              <span class="badge whatsapp">💬 WhatsApp</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€1.250</div>
+            <div class="price-sub">per week (est. — May: €714/4n)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 7 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé pool</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value bad">Niet vermeld in listing</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld</div>
+              <div class="fact-value warn">Heraklion ~65 min (iets te ver) · Rethymno ~45 min ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="red-flag">🚨 Strandafstand onbekend — voor Levi (4) is dit essentieel om te verifiëren. Agios Pavlos heeft wel een eigen klein strand maar bereikbaarheid onduidelijk.</div>
+        <div class="card-desc">
+          Goedkoopste optie van alle leads. Oud huis (gebouwd 1800) van 160m² in rustig dorpje. Kreta in augustus is serieus heet. Meer research nodig voor strandinfomatie en vliegveldafstand.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.villapiscine.nl/vakantiehuis/Griekenland/Kreta/Agios-Pavlos/7-personen/GR6517.616.1/" target="_blank" class="btn-primary">Bekijk op VillaPiscine →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>Holiday Scout</strong> · Persoonlijk vergelijkingsoverzicht · Alle prijzen inclusief btw, exclusief schoonmaak/borg · Geverifieerd 2026-04-30<br>
+  Datums: 17-26 augustus 2026 · Party: 3 volwassenen + 3 kids (7, 6, 4) · <a href="mailto:bennimazzeltof@gmail.com">bennimazzeltof@gmail.com</a>
+</footer>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: document.querySelector('.tabs-nav').offsetTop - 10, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
