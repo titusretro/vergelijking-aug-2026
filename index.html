@@ -506,6 +506,45 @@
       border-top: 1px solid var(--line);
     }
     footer strong { color: var(--ink-3); }
+  
+    /* Sort bar */
+    .sort-bar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 20px;
+      padding: 12px 16px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .sort-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+    .sort-btn {
+      padding: 5px 12px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: white;
+      font-size: 12px;
+      font-family: inherit;
+      color: var(--ink-3);
+      cursor: pointer;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .sort-btn:hover { border-color: #EC4899; color: #EC4899; }
+    .sort-btn.active { background: #EC4899; border-color: #EC4899; color: white; font-weight: 600; }
+    .sort-btn .sort-arrow { font-size: 10px; margin-left: 2px; }
+    @media (max-width: 640px) { .sort-bar { padding: 10px 12px; } }
+
   </style>
 </head>
 <body>
@@ -576,7 +615,16 @@
       <div class="wb-note">Droog en heet. Arenal strand extreem druk in augustus — vroeg gaan. Avonden aangenaam. Middellandse Zeeklimaat.</div>
     </div>
 
-    <div class="cards">
+    <div class="sort-bar">
+      <span class="sort-label">Sorteer:</span>
+      <button class="sort-btn active" onclick="sortCards(this,'default')" data-sort="default">Standaard</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-asc')" data-sort="price-asc">💶 Prijs laag→hoog</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-desc')" data-sort="price-desc">💶 Prijs hoog→laag</button>
+      <button class="sort-btn" onclick="sortCards(this,'beach-asc')" data-sort="beach-asc">🏖 Strand dichtbij</button>
+      <button class="sort-btn" onclick="sortCards(this,'rating-desc')" data-sort="rating-desc">⭐ Beste rating</button>
+      <button class="sort-btn" onclick="sortCards(this,'beds-desc')" data-sort="beds-desc">🛏 Meeste kamers</button>
+    </div>
+        <div class="cards">
 
       <!-- #1 Casa La Palmera -->
       <div class="card top-pick">
@@ -1875,7 +1923,16 @@
       <div class="wb-note">Warmste maand van het jaar. Oceaanwater lekker warm. Incidentele bui mogelijk maar zeldzaam. Drukste toeristenmaand — stranden vol.</div>
     </div>
 
-    <div class="cards">
+    <div class="sort-bar">
+      <span class="sort-label">Sorteer:</span>
+      <button class="sort-btn active" onclick="sortCards(this,'default')" data-sort="default">Standaard</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-asc')" data-sort="price-asc">💶 Prijs laag→hoog</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-desc')" data-sort="price-desc">💶 Prijs hoog→laag</button>
+      <button class="sort-btn" onclick="sortCards(this,'beach-asc')" data-sort="beach-asc">🏖 Strand dichtbij</button>
+      <button class="sort-btn" onclick="sortCards(this,'rating-desc')" data-sort="rating-desc">⭐ Beste rating</button>
+      <button class="sort-btn" onclick="sortCards(this,'beds-desc')" data-sort="beds-desc">🛏 Meeste kamers</button>
+    </div>
+        <div class="cards">
 
       <!-- #1 Dofins Bahia Azul -->
       <div class="card top-pick">
@@ -2422,7 +2479,16 @@
       <div class="wb-note">Kuststeden (Estepona, Marbella) zijn aangenaam door zeewind. Binnenland zoals Sayalonga kan 35–40°C bereiken — groot verschil met de kust. Kies altijd kustlocatie.</div>
     </div>
 
-    <div class="cards">
+    <div class="sort-bar">
+      <span class="sort-label">Sorteer:</span>
+      <button class="sort-btn active" onclick="sortCards(this,'default')" data-sort="default">Standaard</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-asc')" data-sort="price-asc">💶 Prijs laag→hoog</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-desc')" data-sort="price-desc">💶 Prijs hoog→laag</button>
+      <button class="sort-btn" onclick="sortCards(this,'beach-asc')" data-sort="beach-asc">🏖 Strand dichtbij</button>
+      <button class="sort-btn" onclick="sortCards(this,'rating-desc')" data-sort="rating-desc">⭐ Beste rating</button>
+      <button class="sort-btn" onclick="sortCards(this,'beds-desc')" data-sort="beds-desc">🛏 Meeste kamers</button>
+    </div>
+        <div class="cards">
 
       <!-- #1 Las Granadillas Estepona -->
       <div class="card top-pick">
@@ -2775,7 +2841,16 @@
       <div class="wb-note">Droogste augustus van alle regio's (1mm). Zee is frisser dan de Middellandse Zee (21°C vs 26°C) — Levi en jonge kinderen vinden het soms te koud. Bries houdt het aangenaam bij hoge temperaturen.</div>
     </div>
 
-    <div class="cards">
+    <div class="sort-bar">
+      <span class="sort-label">Sorteer:</span>
+      <button class="sort-btn active" onclick="sortCards(this,'default')" data-sort="default">Standaard</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-asc')" data-sort="price-asc">💶 Prijs laag→hoog</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-desc')" data-sort="price-desc">💶 Prijs hoog→laag</button>
+      <button class="sort-btn" onclick="sortCards(this,'beach-asc')" data-sort="beach-asc">🏖 Strand dichtbij</button>
+      <button class="sort-btn" onclick="sortCards(this,'rating-desc')" data-sort="rating-desc">⭐ Beste rating</button>
+      <button class="sort-btn" onclick="sortCards(this,'beds-desc')" data-sort="beds-desc">🛏 Meeste kamers</button>
+    </div>
+        <div class="cards">
 
       <!-- #1 Villa Vale do Lobo -->
       <div class="card top-pick">
@@ -3111,7 +3186,16 @@
       <div class="wb-note">Praktisch geen regen in augustus. De Meltemi noordwestenwind koelt de kust af — aangenamer dan je zou verwachten bij 33°C. Zuid-Kreta (Agios Pavlos) heeft minder Meltemi dan het noorden.</div>
     </div>
 
-    <div class="cards">
+    <div class="sort-bar">
+      <span class="sort-label">Sorteer:</span>
+      <button class="sort-btn active" onclick="sortCards(this,'default')" data-sort="default">Standaard</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-asc')" data-sort="price-asc">💶 Prijs laag→hoog</button>
+      <button class="sort-btn" onclick="sortCards(this,'price-desc')" data-sort="price-desc">💶 Prijs hoog→laag</button>
+      <button class="sort-btn" onclick="sortCards(this,'beach-asc')" data-sort="beach-asc">🏖 Strand dichtbij</button>
+      <button class="sort-btn" onclick="sortCards(this,'rating-desc')" data-sort="rating-desc">⭐ Beste rating</button>
+      <button class="sort-btn" onclick="sortCards(this,'beds-desc')" data-sort="beds-desc">🛏 Meeste kamers</button>
+    </div>
+        <div class="cards">
 
       <!-- #1 Agios Pavlos -->
       <div class="card flag-warn">
@@ -3608,6 +3692,132 @@
 </footer>
 
 <script>
+
+  // ── Sort helpers ──────────────────────────────────────────────────
+  function parseCardPrice(card) {
+    // 1. card-price block (original cards)
+    const pm = card.querySelector('.price-main');
+    if (pm) {
+      const m = pm.textContent.match(/[€£]([\d.,]+)/);
+      if (m) return parseFloat(m[1].replace(/\./g,'').replace(',','.'));
+    }
+    // 2. fact-row where label contains 'prijs' or 'per week' or 'per nacht'
+    for (const row of card.querySelectorAll('.fact-row')) {
+      const lbl = (row.querySelector('.fact-label')?.textContent||'').toLowerCase();
+      if (/prijs|per week|per nacht/.test(lbl)) {
+        const val = row.querySelector('.fact-value')?.textContent||'';
+        const m = val.match(/[€£]([\d.,]+)/);
+        if (m) return parseFloat(m[1].replace(/\./g,'').replace(',','.'));
+      }
+    }
+    // 3. any fact-value with € that looks like a weekly amount
+    for (const fv of card.querySelectorAll('.fact-value')) {
+      const m = fv.textContent.match(/~?[€£]([\d.,]+)/);
+      if (m) {
+        const v = parseFloat(m[1].replace(/\./g,'').replace(',','.'));
+        if (v > 300) return v; // skip small numbers
+      }
+    }
+    return 99999;
+  }
+
+  function parseCardBeach(card) {
+    for (const row of card.querySelectorAll('.fact-row')) {
+      const lbl = (row.querySelector('.fact-label')?.textContent||'').toLowerCase();
+      if (lbl.includes('strand')) {
+        const val = (row.querySelector('.fact-value')?.textContent||'').toLowerCase();
+        if (val.includes('vlakbij') || val.includes('beachfront')) return 0.05;
+        const km = val.match(/([\d.,]+)\s*km/);
+        if (km) return parseFloat(km[1].replace(',','.'));
+        const min = val.match(/(\d+)\s*min/);
+        if (min) return parseInt(min[1]) * 0.5; // ~0.5km per min driving
+        const m = val.match(/([\d.,]+)/);
+        if (m) return parseFloat(m[1].replace(',','.'));
+      }
+    }
+    return 99;
+  }
+
+  function parseCardRating(card) {
+    const txt = card.textContent;
+    // badge like "9.4 ★" or "9,4/10"
+    let m = txt.match(/(\d+[.,]\d+)\s*\/\s*10/);
+    if (m) return parseFloat(m[1].replace(',','.'));
+    m = txt.match(/(\d+[.,]\d+)\s*★/);
+    if (m) return parseFloat(m[1].replace(',','.'));
+    return 0;
+  }
+
+  function parseCardBeds(card) {
+    for (const fv of card.querySelectorAll('.fact-value')) {
+      const m = fv.textContent.match(/(\d+)\s*BR/);
+      if (m) return parseInt(m[1]);
+    }
+    const m = card.textContent.match(/(\d+)\s*BR/);
+    if (m) return parseInt(m[1]);
+    return 0;
+  }
+
+  function initCardData(card, idx) {
+    card.dataset.origIdx = idx;
+    card.dataset.price   = parseCardPrice(card);
+    card.dataset.beach   = parseCardBeach(card);
+    card.dataset.rating  = parseCardRating(card);
+    card.dataset.beds    = parseCardBeds(card);
+  }
+
+  // Init all cards on load
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.cards .card').forEach((c, i) => initCardData(c, i));
+  });
+
+  function sortCards(btn, criterion) {
+    // Find the tab panel and cards container
+    const tabPanel = btn.closest('.tab-panel');
+    const container = tabPanel.querySelector('.cards');
+    if (!container) return;
+
+    // Update active button (within this tab panel only)
+    tabPanel.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cards = Array.from(container.querySelectorAll(':scope > .card'));
+    const dividers = Array.from(container.querySelectorAll(':scope > .section-divider'));
+
+    if (criterion === 'default') {
+      // Restore original order
+      cards.sort((a, b) => parseInt(a.dataset.origIdx) - parseInt(b.dataset.origIdx));
+      // Show dividers again
+      dividers.forEach(d => d.style.display = '');
+      // Re-insert all children in original order by origIdx
+      const allItems = Array.from(container.querySelectorAll(':scope > .card, :scope > .section-divider'));
+      allItems.sort((a, b) => {
+        const ai = a.dataset.origIdx !== undefined ? parseInt(a.dataset.origIdx) : parseInt(a.dataset.divIdx||0);
+        const bi = b.dataset.origIdx !== undefined ? parseInt(b.dataset.origIdx) : parseInt(b.dataset.divIdx||0);
+        return ai - bi;
+      });
+      allItems.forEach(el => container.appendChild(el));
+      return;
+    }
+
+    // Hide dividers when sorted
+    dividers.forEach(d => {
+      if (!d.dataset.divIdx) d.dataset.divIdx = Array.from(container.children).indexOf(d);
+      d.style.display = 'none';
+    });
+
+    cards.sort((a, b) => {
+      if (criterion === 'price-asc')   return parseFloat(a.dataset.price)  - parseFloat(b.dataset.price);
+      if (criterion === 'price-desc')  return parseFloat(b.dataset.price)  - parseFloat(a.dataset.price);
+      if (criterion === 'beach-asc')   return parseFloat(a.dataset.beach)  - parseFloat(b.dataset.beach);
+      if (criterion === 'rating-desc') return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
+      if (criterion === 'beds-desc')   return parseFloat(b.dataset.beds)   - parseFloat(a.dataset.beds);
+      return 0;
+    });
+
+    cards.forEach(c => container.appendChild(c));
+  }
+
   function switchTab(id, btn) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
