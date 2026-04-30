@@ -3731,6 +3731,8 @@
         if (km) return parseFloat(km[1].replace(',','.'));
         const min = val.match(/(\d+)\s*min/);
         if (min) return parseInt(min[1]) * 0.5; // ~0.5km per min driving
+        const meters = val.match(/([\d]+)\s*m\b/);
+        if (meters) return parseInt(meters[1]) / 1000;
         const m = val.match(/([\d.,]+)/);
         if (m) return parseFloat(m[1].replace(',','.'));
       }
