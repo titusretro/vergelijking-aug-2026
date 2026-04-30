@@ -433,6 +433,70 @@
       background: var(--line);
     }
 
+    /* WEATHER BAR */
+    .weather-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0;
+      margin: 20px 0 28px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .wb-title {
+      padding: 14px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      background: var(--paper-2);
+      border-right: 1px solid var(--line);
+      white-space: nowrap;
+    }
+    .wb-stats {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+    .wb-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-right: 1px solid var(--line);
+    }
+    .wb-stat:last-child { border-right: none; }
+    .wb-icon { font-size: 20px; }
+    .wb-text {}
+    .wb-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .wb-label {
+      font-size: 11px;
+      color: var(--ink-4);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .wb-note {
+      width: 100%;
+      padding: 8px 18px;
+      font-size: 12px;
+      color: var(--ink-3);
+      font-style: italic;
+      background: var(--paper-2);
+      border-top: 1px solid var(--line);
+    }
+    @media (max-width: 640px) {
+      .wb-stat { padding: 10px 14px; }
+      .wb-title { padding: 10px 14px; }
+    }
+
     /* FOOTER */
     footer {
       text-align: center;
@@ -477,13 +541,13 @@
       🇪🇸 Jávea <span class="count">21</span>
     </button>
     <button class="tab-btn" onclick="switchTab('mallorca',this)">
-      🇪🇸 Mallorca <span class="count">2</span>
+      🇪🇸 Mallorca <span class="count">6</span>
     </button>
     <button class="tab-btn" onclick="switchTab('andalusie',this)">
-      🇪🇸 Andalusië <span class="count">2</span>
+      🇪🇸 Andalusië <span class="count">5</span>
     </button>
     <button class="tab-btn" onclick="switchTab('algarve',this)">
-      🇵🇹 Algarve <span class="count">1</span>
+      🇵🇹 Algarve <span class="count">5</span>
     </button>
     <button class="tab-btn" onclick="switchTab('kreta',this)">
       🇬🇷 Kreta <span class="count">1</span>
@@ -499,6 +563,19 @@
       <p>Meeste research gedaan hier. Arenal = enige zandstrand, geschikt voor Levi. Hoge seizoensprijzen in augustus.</p>
       <div class="airport-tag">✈️ Alicante ~85 min · Valencia ~100 min — grensgeval voor 1-uur criterium</div>
     </div>
+
+    <div class="weather-bar">
+      <div class="wb-title">☀️ Augustus weer</div>
+      <div class="wb-stats">
+        <div class="wb-stat"><span class="wb-icon">🌡️</span><div class="wb-text"><div class="wb-value">30–33°C</div><div class="wb-label">Overdag max</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌊</span><div class="wb-text"><div class="wb-value">26°C</div><div class="wb-label">Zeewater</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">☀️</span><div class="wb-text"><div class="wb-value">10–11u</div><div class="wb-label">Zon per dag</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌧️</span><div class="wb-text"><div class="wb-value">~8mm</div><div class="wb-label">Neerslag</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌙</span><div class="wb-text"><div class="wb-value">23°C</div><div class="wb-label">Nacht min</div></div></div>
+      </div>
+      <div class="wb-note">Droog en heet. Arenal strand extreem druk in augustus — vroeg gaan. Avonden aangenaam. Middellandse Zeeklimaat.</div>
+    </div>
+
     <div class="cards">
 
       <!-- #1 Casa La Palmera -->
@@ -1677,6 +1754,19 @@
       <p>Palma luchthaven goed bereikbaar. Let op: augustus is extreem druk. Beide opties vrij betaalbaar.</p>
       <div class="airport-tag">✈️ Palma de Mallorca · Ca Na Poveta ~45 min · Dofins Bahia Azul ~30 min ✓</div>
     </div>
+
+    <div class="weather-bar">
+      <div class="wb-title">☀️ Augustus weer</div>
+      <div class="wb-stats">
+        <div class="wb-stat"><span class="wb-icon">🌡️</span><div class="wb-text"><div class="wb-value">28–33°C</div><div class="wb-label">Overdag max</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌊</span><div class="wb-text"><div class="wb-value">26°C</div><div class="wb-label">Zeewater</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">☀️</span><div class="wb-text"><div class="wb-value">10–12u</div><div class="wb-label">Zon per dag</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌧️</span><div class="wb-text"><div class="wb-value">16mm</div><div class="wb-label">Neerslag/mnd</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌙</span><div class="wb-text"><div class="wb-value">23°C</div><div class="wb-label">Nacht min</div></div></div>
+      </div>
+      <div class="wb-note">Warmste maand van het jaar. Oceaanwater lekker warm. Incidentele bui mogelijk maar zeldzaam. Drukste toeristenmaand — stranden vol.</div>
+    </div>
+
     <div class="cards">
 
       <!-- #1 Dofins Bahia Azul -->
@@ -1822,6 +1912,209 @@
         </div>
       </div>
 
+      <div class="section-divider">Airbnb · Mallorca (17-26 aug 2026, 9 nachten)</div>
+
+      <!-- Mallorca Airbnb #1 Villa Durai Pollença -->
+      <div class="card top-pick">
+        <div class="card-header">
+          <div class="rank-pill">A1</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Durai</div>
+            <div class="card-location">🇪🇸 Pollença · Noord-Mallorca · Airbnb</div>
+            <div class="card-badges">
+              <span class="badge budget">Beste waarde</span>
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€2.869</div>
+            <div class="price-sub">9 nachten totaal (€319/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">Pollença: strand ~10-15 min rijden</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Palma</div>
+              <div class="fact-value warn">~55 min — net binnen criterium</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🌍</div>
+            <div class="fact-content">
+              <div class="fact-label">Zone</div>
+              <div class="fact-value">Noord-Mallorca · rustig, authentiek</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ Pollença is prachtig maar ver van Palma (~55 min). Strand niet direct, ~15 min rijden naar Platja de Formentor of Cala Sant Vicenç. Goedkoopste Mallorca-optie.</div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Pollença--Mallorca/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Mallorca Airbnb #2 Ca Na Carmen -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A2</div>
+          <div class="card-title-block">
+            <div class="card-name">Ca Na Carmen</div>
+            <div class="card-location">🇪🇸 Mallorca · Airbnb (nieuw huis met zwembad)</div>
+            <div class="card-badges">
+              <span class="badge new">Airbnb · Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€4.098</div>
+            <div class="price-sub">9 nachten totaal (€455/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé pool</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Status</div>
+              <div class="fact-value">Nieuw object — nog geen reviews</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ Nieuw object zonder reviews. Locatie navragen voor strandafstand-bevestiging.</div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Mallorca--Spanje/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3&amenities%5B%5D=7" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Mallorca Airbnb #3 Landhuis Manacor -->
+      <div class="card flag-warn">
+        <div class="card-header">
+          <div class="rank-pill">A3</div>
+          <div class="card-title-block">
+            <div class="card-name">Landhuis Manacor</div>
+            <div class="card-location">🇪🇸 Manacor · Oost-Mallorca · Airbnb</div>
+            <div class="card-badges">
+              <span class="badge warn">Strand ver</span>
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€3.109</div>
+            <div class="price-sub">9 nachten totaal (€346/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value bad">Manacor: ~15 km naar Porto Cristo of Cala Millor</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🌍</div>
+            <div class="fact-content">
+              <div class="fact-label">Zone</div>
+              <div class="fact-value">Binnenland Oost-Mallorca</div>
+            </div>
+          </div>
+        </div>
+        <div class="red-flag">🚨 Manacor is binnenland — strand 15+ km. Buiten strand-criterium. Alleen interessant als jullie elke dag naar het strand rijden accepteren.</div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Manacor--Mallorca/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Mallorca Airbnb #4 S'Embat Santanyí -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A4</div>
+          <div class="card-title-block">
+            <div class="card-name">S'Embat · Santanyí</div>
+            <div class="card-location">🇪🇸 Santanyí · Zuid-Mallorca · Airbnb</div>
+            <div class="card-badges">
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€4.934</div>
+            <div class="price-sub">9 nachten totaal (€548/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Direct groot zwembad</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🌍</div>
+            <div class="fact-content">
+              <div class="fact-label">Zone</div>
+              <div class="fact-value ok">Zuid-Mallorca · rustig, schilderachtig, Palma ~45 min</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">Cala Figuera of Cala Mondragó ~5-10 min rijden</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-desc">
+          Santanyí is de mooiste regio van Zuid-Mallorca — authentiek dorp, rustiger dan het noorden. Cala Figuera is een schilderachtige vissershaven. Iets duurder dan de anderen maar goede locatie voor families.</div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Santanyi--Mallorca/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3&amenities%5B%5D=7" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1834,6 +2127,19 @@
       <p>Malaga luchthaven goed bereikbaar. Let op: augustus is erg heet in het binnenland (Sayalonga ~35-38°C). Estepona aan de kust is aangenamer.</p>
       <div class="airport-tag">✈️ Malaga · Estepona ~45 min ✓ · Sayalonga ~45 min ✓</div>
     </div>
+
+    <div class="weather-bar">
+      <div class="wb-title">☀️ Augustus weer</div>
+      <div class="wb-stats">
+        <div class="wb-stat"><span class="wb-icon">🌡️</span><div class="wb-text"><div class="wb-value">29–31°C</div><div class="wb-label">Overdag (kust)</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌊</span><div class="wb-text"><div class="wb-value">23°C</div><div class="wb-label">Zeewater</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">☀️</span><div class="wb-text"><div class="wb-value">11u</div><div class="wb-label">Zon per dag</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌧️</span><div class="wb-text"><div class="wb-value">5mm</div><div class="wb-label">Neerslag/mnd</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🔥</span><div class="wb-text"><div class="wb-value">tot 40°C</div><div class="wb-label">Binnenland</div></div></div>
+      </div>
+      <div class="wb-note">Kuststeden (Estepona, Marbella) zijn aangenaam door zeewind. Binnenland zoals Sayalonga kan 35–40°C bereiken — groot verschil met de kust. Kies altijd kustlocatie.</div>
+    </div>
+
     <div class="cards">
 
       <!-- #1 Las Granadillas Estepona -->
@@ -1980,6 +2286,188 @@
         </div>
       </div>
 
+      <div class="section-divider">VillaPiscine · Estepona</div>
+
+      <!-- #3 Casa Bonita Estepona -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">3</div>
+          <div class="card-title-block">
+            <div class="card-name">Casa Bonita</div>
+            <div class="card-location">🇪🇸 Estepona · Nueva Atalaya · VillaPiscine (ES5730.141.1)</div>
+            <div class="card-badges">
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">navragen</div>
+            <div class="price-sub">augustus exact tarief onbekend</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen · 180m²</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé 7×4m · diepte 1,1-1,8m · traptoegang ✓</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value ok">2 km (~5 min)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja, door het hele huis</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🔥</div>
+            <div class="fact-content">
+              <div class="fact-label">BBQ</div>
+              <div class="fact-value ok">Ja</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Malaga</div>
+              <div class="fact-value ok">~40 min ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ Augustusprijs niet zichtbaar online — navragen via VillaPiscine. Pooldiepte 1,1–1,8m is acceptabel voor Levi (4) met begeleiding.</div>
+        <div class="card-desc">
+          Gerenoveerde 3-laagse villa in rustige woonwijk Nueva Atalaya (14 km van Estepona centrum). Privéparkeren voor 2 auto's, afgesloten tuin met gazon. Goede balans strand/pool/AC. Enige nieuwe kustoptie zonder rode vlag.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.villapiscine.nl/vakantiehuis/Spanje/Costa-del-Sol/Estepona/6-personen/ES5730.141.1/" target="_blank" class="btn-primary">Bekijk op VillaPiscine →</a>
+          <div class="card-footer-meta">Geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <div class="section-divider">Airbnb · Costa del Sol (17-26 aug 2026, 9 nachten)</div>
+
+      <!-- A1 Luxe villa Málaga zeezicht -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A1</div>
+          <div class="card-title-block">
+            <div class="card-name">Luxe villa met zeezicht</div>
+            <div class="card-location">🇪🇸 Málaga · Airbnb (Superhost)</div>
+            <div class="card-badges">
+              <span class="badge top">Superhost</span>
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€4.255</div>
+            <div class="price-sub">9 nachten totaal (€473/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🌊</div>
+            <div class="fact-content">
+              <div class="fact-label">Uitzicht</div>
+              <div class="fact-value ok">Zeezicht</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Beoordeling</div>
+              <div class="fact-value ok">Superhost ✓</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">Exacte strandafstand navragen</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ Precieze locatie en strandafstand bevestigen voor boeking — Málaga-regio is breed.</div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Costa-del-Sol--Spanje/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3&amenities%5B%5D=7" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- A2 Villa Alhaurín de la Torre -->
+      <div class="card flag-warn">
+        <div class="card-header">
+          <div class="rank-pill">A2</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa voor 6 personen met zwembad</div>
+            <div class="card-location">🇪🇸 Alhaurín de la Torre · Airbnb</div>
+            <div class="card-badges">
+              <span class="badge warn">Binnenland 18km</span>
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€3.220</div>
+            <div class="price-sub">9 nachten totaal (€358/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Eigen zwembad</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value bad">~18 km naar kust — buiten criterium</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Malaga</div>
+              <div class="fact-value ok">~15 min ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="red-flag">🚨 18 km van de kust — buiten strand-criterium. Laagste prijs van Airbnb Costa del Sol maar strand is een echte dagrit.</div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Alhaurín-de-la-Torre--Spanje/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3&amenities%5B%5D=7" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1992,6 +2480,19 @@
       <p>Faro luchthaven 20 minuten. Almancil zit in het "Golden Triangle" (Vale do Lobo, Quinta do Lago) — luxueuze omgeving. August is druk maar aangenamer dan Spaans binnenland.</p>
       <div class="airport-tag">✈️ Faro luchthaven ~20 min ✓ — beste luchthaven-score van alle regio's</div>
     </div>
+
+    <div class="weather-bar">
+      <div class="wb-title">☀️ Augustus weer</div>
+      <div class="wb-stats">
+        <div class="wb-stat"><span class="wb-icon">🌡️</span><div class="wb-text"><div class="wb-value">28–32°C</div><div class="wb-label">Overdag max</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌊</span><div class="wb-text"><div class="wb-value">21°C</div><div class="wb-label">Zeewater (Atlantisch)</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">☀️</span><div class="wb-text"><div class="wb-value">12u</div><div class="wb-label">Zon per dag</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌧️</span><div class="wb-text"><div class="wb-value">1mm</div><div class="wb-label">Neerslag/mnd</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">💨</span><div class="wb-text"><div class="wb-value">Atlantische bries</div><div class="wb-label">Verkoeling</div></div></div>
+      </div>
+      <div class="wb-note">Droogste augustus van alle regio's (1mm). Zee is frisser dan de Middellandse Zee (21°C vs 26°C) — Levi en jonge kinderen vinden het soms te koud. Bries houdt het aangenaam bij hoge temperaturen.</div>
+    </div>
+
     <div class="cards">
 
       <!-- #1 Villa Vale do Lobo -->
@@ -2066,6 +2567,243 @@
         </div>
       </div>
 
+      <div class="section-divider">VillaPiscine · Albufeira</div>
+
+      <!-- #2 VillaPiscine Albufeira -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">2</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Albufeira</div>
+            <div class="card-location">🇵🇹 Albufeira · Algarve · VillaPiscine</div>
+            <div class="card-badges">
+              <span class="badge budget">Budget Algarve</span>
+              <span class="badge new">Nieuw</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">~€2.125</div>
+            <div class="price-sub">per week (startprijs — aug navragen)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Privé pool</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value ok">1,1 km ✓</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Faro</div>
+              <div class="fact-value ok">~35 min ✓</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value warn">Navragen</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ Startprijs €2.125 — augustusprijs navragen want dat is vermoedelijk hoger. AC bevestigen. Albufeira is het drukste toeristengebied van de Algarve.</div>
+        <div class="card-footer">
+          <a href="https://www.villapiscine.nl/vakantiehuizen-met-privezwembad/Portugal/Algarve/" target="_blank" class="btn-primary">Zoek op VillaPiscine →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <div class="section-divider">Airbnb · Algarve (17-26 aug 2026, 9 nachten)</div>
+
+      <!-- Algarve Airbnb #1 Heerlijk huis Alcantarilha -->
+      <div class="card top-pick">
+        <div class="card-header">
+          <div class="rank-pill">A1</div>
+          <div class="card-title-block">
+            <div class="card-name">Heerlijk huis Alcantarilha</div>
+            <div class="card-location">🇵🇹 Alcantarilha · Algarve · Airbnb (Superhost)</div>
+            <div class="card-badges">
+              <span class="badge top">Superhost</span>
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€3.557</div>
+            <div class="price-sub">9 nachten totaal (€395/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value ok">~5 km naar Armação de Pêra (zand)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">⭐</div>
+            <div class="fact-content">
+              <div class="fact-label">Beoordeling</div>
+              <div class="fact-value ok">Superhost ✓</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Faro</div>
+              <div class="fact-value ok">~40 min ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-desc">
+          Alcantarilha is een rustig dorpje in het midden van de Algarve. Armação de Pêra is een van de mooiste brede zandstranden van de regio — gezinsvriendelijk. Superhost geeft betrouwbaarheid. Goede prijs voor de Algarve.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Alcantarilha--Portugal/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Algarve Airbnb #2 Rijtjeshuis Porches -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A2</div>
+          <div class="card-title-block">
+            <div class="card-name">Modern huis met zwembad · Porches</div>
+            <div class="card-location">🇵🇹 Porches · Algarve · Airbnb (Superhost · AC)</div>
+            <div class="card-badges">
+              <span class="badge top">Superhost</span>
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€4.494</div>
+            <div class="price-sub">9 nachten totaal (€499/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏊</div>
+            <div class="fact-content">
+              <div class="fact-label">Zwembad</div>
+              <div class="fact-value ok">Eigen zwembad</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">❄️</div>
+            <div class="fact-content">
+              <div class="fact-label">Airco</div>
+              <div class="fact-value ok">Ja ✓ (vermeld in listing)</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value ok">~3 km naar Carvoeiro ✓</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Faro</div>
+              <div class="fact-value ok">~45 min ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-desc">
+          Modern huis in Porches — een van de betere kustlocaties in de Algarve. Carvoeiro is een schilderachtige kustplaats met meerdere kleine zandstranden. AC en pool bevestigd. Superhost-garantie.
+        </div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Porches--Portugal/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3&amenities%5B%5D=7" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
+      <!-- Algarve Airbnb #3 Villa Faro panoramisch -->
+      <div class="card">
+        <div class="card-header">
+          <div class="rank-pill">A3</div>
+          <div class="card-title-block">
+            <div class="card-name">Villa Faro · panoramisch uitzicht</div>
+            <div class="card-location">🇵🇹 Faro · Algarve · Airbnb</div>
+            <div class="card-badges">
+              <span class="badge new">Airbnb</span>
+            </div>
+          </div>
+          <div class="card-price">
+            <div class="price-main">€3.650</div>
+            <div class="price-sub">9 nachten totaal (€406/nacht)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="fact-row">
+            <div class="fact-icon">🛏</div>
+            <div class="fact-content">
+              <div class="fact-label">Slaapkamers / pax</div>
+              <div class="fact-value ok">3 BR · 6 personen</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🌊</div>
+            <div class="fact-content">
+              <div class="fact-label">Uitzicht</div>
+              <div class="fact-value ok">360° panoramisch · dakterras</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-content">
+              <div class="fact-label">Vliegveld Faro</div>
+              <div class="fact-value ok">~15 min ✓ — kortst bij vliegveld</div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-icon">🏖</div>
+            <div class="fact-content">
+              <div class="fact-label">Strand</div>
+              <div class="fact-value warn">Faro centrum: strand ~15 min (Ilha de Faro via brug)</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-flag">⚠️ Faro zelf is geen strandstad — Ilha de Faro is 15 min. Strandafstand aan de bovengrens van criterium. Dichtst bij vliegveld van alle Algarve-opties.</div>
+        <div class="card-footer">
+          <a href="https://www.airbnb.nl/s/Faro--Portugal/homes?checkin=2026-08-17&checkout=2026-08-26&adults=3&children=3&amenities%5B%5D=7" target="_blank" class="btn-primary">Zoek op Airbnb →</a>
+          <div class="card-footer-meta">Prijs geverifieerd 2026-04-30</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -2078,6 +2816,19 @@
       <p>Één lead — meer research nodig. Agios Pavlos is een rustig dorpje aan de zuidkust van Kreta. Strandinfomatie onduidelijk.</p>
       <div class="airport-tag">✈️ Heraklion ~65 min · Rethymno ~45 min — grensgeval</div>
     </div>
+
+    <div class="weather-bar">
+      <div class="wb-title">☀️ Augustus weer</div>
+      <div class="wb-stats">
+        <div class="wb-stat"><span class="wb-icon">🌡️</span><div class="wb-text"><div class="wb-value">28–33°C</div><div class="wb-label">Overdag max</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌊</span><div class="wb-text"><div class="wb-value">26°C</div><div class="wb-label">Zeewater</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">☀️</span><div class="wb-text"><div class="wb-value">12u</div><div class="wb-label">Zon per dag</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">🌧️</span><div class="wb-text"><div class="wb-value">~0mm</div><div class="wb-label">Neerslag</div></div></div>
+        <div class="wb-stat"><span class="wb-icon">💨</span><div class="wb-text"><div class="wb-value">Meltemi</div><div class="wb-label">NW-wind (verkoelend)</div></div></div>
+      </div>
+      <div class="wb-note">Praktisch geen regen in augustus. De Meltemi noordwestenwind koelt de kust af — aangenamer dan je zou verwachten bij 33°C. Zuid-Kreta (Agios Pavlos) heeft minder Meltemi dan het noorden.</div>
+    </div>
+
     <div class="cards">
 
       <!-- #1 Agios Pavlos -->
